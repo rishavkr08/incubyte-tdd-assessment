@@ -24,12 +24,12 @@ class StringCalculatorTest < Minitest::Test
     assert_equal 100, StringCalculator.add('10, 20, 30, 20, 5, 15')
   end
 
-  def test_add_any_numbers_with_line_break_delimeter
+  def test_add_any_numbers_with_line_break_delimiter
     assert_equal 60, StringCalculator.add('10, 20, 30')
     assert_equal 60, StringCalculator.add("10 \n20, 30")
   end
 
-  def test_add_number_with_custom_delimeter
+  def test_add_number_with_custom_delimiter
     assert_equal 3, StringCalculator.add("//;\n1;2")
     assert_equal 3, StringCalculator.add("//@\n1@2")
     assert_equal 3, StringCalculator.add("//:\n1:2")
