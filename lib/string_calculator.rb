@@ -3,13 +3,13 @@
 # String calculator with an add method that accepts a string
 class StringCalculator
   def add(numbers)
-    return 0 if numbers.nil?
+    return 0 if numbers.nil? || numbers.empty?
+
+    check_for_invalid_input(numbers)
 
     digits = get_digits(numbers)
 
     check_for_negative_numbers(digits)
-
-    return 0 if digits.empty?
 
     digits.sum { |d| d < 1000 ? d : 0 }
   end
@@ -19,8 +19,6 @@ class StringCalculator
   def get_digits(numbers)
     delimiter = get_delimiters(numbers)
     numbers = numbers.split("\n", 2).last if numbers.start_with?('//')
-
-    check_for_invalid_input(numbers)
 
     numbers.split(/#{delimiter}/).map(&:to_i)
   end
