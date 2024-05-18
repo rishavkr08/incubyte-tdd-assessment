@@ -17,15 +17,20 @@ class StringCalculator
   private
 
   def get_digits(numbers)
-    if numbers.start_with? '/'
-      line_break_split = numbers.split("\n", 2)
-      delimiter = Regexp.escape(line_break_split.first[2])
-      numbers = line_break_split.last
-    else
-      delimiter = /,|\n/
-    end
+    delimiter = get_delimiters(numbers)
+    numbers = numbers.split("\n", 2).last if numbers.start_with?('//')
 
-    numbers.split(delimiter).map(&:to_i)
+    split_numbers = numbers.split(/#{delimiter}/)
+
+    split_numbers.map(&:to_i)
+  end
+
+  def get_delimiters(numbers)
+    delimiters = /,|\n/
+    if numbers.start_with?('//')
+      delimiters = numbers[2..].scan(/\[([^\[\]]+)\]/).flatten.map { |d| Regexp.escape(d) }.join('|')
+    end
+    delimiters
   end
 
   def check_for_negative_numbers(numbers)

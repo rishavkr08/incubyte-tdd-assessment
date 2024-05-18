@@ -47,4 +47,16 @@ class StringCalculatorTest < Minitest::Test
   def test_ignore_numbers_bigger_than_thousand
     assert_equal 3, @string_calculator.add('1000,2,1')
   end
+
+  def test_delimiter_for_any_length
+    assert_equal 6, @string_calculator.add("//[***]\n1***2***3")
+  end
+
+  def test_multiple_delimiters
+    assert_equal 6, @string_calculator.add("//[*][%]\n1*2%3")
+  end
+
+  def test_multiple_delimiters_for_any_length
+    assert_equal 6, @string_calculator.add("//[**][%]\n1**2%3")
+  end
 end
