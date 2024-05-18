@@ -13,6 +13,11 @@ class StringCalculator
       numbers = line_break_split.last
     end
 
+    nums = numbers.split(delimiter).map(&:to_i)
+    negatives = nums.select(&:negative?)
+
+    raise "Negative numbers not allowed: #{negatives.join(',')}" unless negatives.empty?
+
     return numbers.to_i if numbers.split(delimiter).count < 2
 
     digits = numbers.split(delimiter).map(&:to_i)
