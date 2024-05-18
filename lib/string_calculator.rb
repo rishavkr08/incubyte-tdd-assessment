@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# String calculator with a add method that accepts string
+# String calculator with an add method that accepts a string
 class StringCalculator
   def add(numbers)
     return 0 if numbers.nil?
@@ -11,7 +11,7 @@ class StringCalculator
 
     return 0 if digits.empty?
 
-    digits.reduce(0, :+)
+    digits.sum { |d| d < 1000 ? d : 0 }
   end
 
   private
