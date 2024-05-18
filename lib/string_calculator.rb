@@ -20,9 +20,9 @@ class StringCalculator
     delimiter = get_delimiters(numbers)
     numbers = numbers.split("\n", 2).last if numbers.start_with?('//')
 
-    split_numbers = numbers.split(/#{delimiter}/)
+    check_for_invalid_input(numbers)
 
-    split_numbers.map(&:to_i)
+    numbers.split(/#{delimiter}/).map(&:to_i)
   end
 
   def get_delimiters(numbers)
@@ -31,6 +31,10 @@ class StringCalculator
       delimiters = numbers[2..].scan(/\[([^\[\]]+)\]/).flatten.map { |d| Regexp.escape(d) }.join('|')
     end
     delimiters
+  end
+
+  def check_for_invalid_input(numbers)
+    raise 'Invalid input' if numbers =~ /(,|\n){2,}/ || numbers =~ /(,|\n)$/
   end
 
   def check_for_negative_numbers(numbers)

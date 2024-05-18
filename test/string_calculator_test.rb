@@ -28,6 +28,14 @@ class StringCalculatorTest < Minitest::Test
     assert_equal 100, @string_calculator.add('10, 20, 30, 20, 5, 15')
   end
 
+  def test_invalid_input
+    exception = assert_raises(RuntimeError) { @string_calculator.add("1,\n2") }
+    assert_equal 'Invalid input', exception.message
+
+    exception = assert_raises(RuntimeError) { @string_calculator.add("\\,1\n\n") }
+    assert_equal 'Invalid input', exception.message
+  end
+
   def test_add_any_numbers_with_line_break_delimiter
     assert_equal 60, @string_calculator.add('10, 20, 30')
     assert_equal 60, @string_calculator.add("10 \n20, 30")
