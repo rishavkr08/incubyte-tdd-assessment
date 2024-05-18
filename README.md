@@ -1,6 +1,7 @@
 ## Incubyte TDD Assessment (Ruby)
 
 ### String Calculator TDD Kata
+[![Ruby](https://github.com/rishavkr08/incubyte-tdd-assessment/actions/workflows/ruby.yml/badge.svg)](https://github.com/rishavkr08/incubyte-tdd-assessment/actions/workflows/ruby.yml)
 
 1. Create a simple String calculator with a method signature similar to this
     ```
