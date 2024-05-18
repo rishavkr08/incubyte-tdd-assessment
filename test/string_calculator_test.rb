@@ -31,5 +31,7 @@ class StringCalculatorTest < Minitest::Test
 
   def test_add_number_with_custom_delimeter
     assert_equal 3, StringCalculator.add("//;\n1;2")
+    assert_equal 3, StringCalculator.add("//@\n1@2")
+    assert_equal 3, StringCalculator.add("//:\n1:2")
   end
 end
