@@ -3,7 +3,7 @@
 # String calculator with an add method that accepts a string
 class StringCalculator
   def add(numbers)
-    return 0 if numbers.nil? || numbers.empty?
+    return 0 if numbers.nil?
 
     check_for_invalid_input(numbers)
 
@@ -32,7 +32,7 @@ class StringCalculator
   end
 
   def check_for_invalid_input(numbers)
-    raise 'Invalid input' if numbers =~ /(,|\n){2,}/ || numbers =~ /(,|\n)$/
+    raise 'Invalid input' if !numbers.is_a?(String) || numbers =~ /(,|\n){2,}/ || numbers =~ /(,|\n)$/
   end
 
   def check_for_negative_numbers(numbers)

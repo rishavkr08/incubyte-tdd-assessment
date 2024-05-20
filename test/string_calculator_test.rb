@@ -29,6 +29,9 @@ class StringCalculatorTest < Minitest::Test
   end
 
   def test_invalid_input
+    exception = assert_raises(RuntimeError) { @string_calculator.add(10) }
+    assert_equal 'Invalid input', exception.message
+
     exception = assert_raises(RuntimeError) { @string_calculator.add("1,\n2") }
     assert_equal 'Invalid input', exception.message
 
