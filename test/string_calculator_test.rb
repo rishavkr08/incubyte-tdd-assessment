@@ -70,4 +70,11 @@ class StringCalculatorTest < Minitest::Test
   def test_multiple_delimiters_for_any_length
     assert_equal 6, @string_calculator.add("//[**][%]\n1**2%3")
   end
+
+  def test_delimeter_for_operators
+    assert_equal 6, @string_calculator.add("//+\n2+2+2")
+    assert_equal 12, @string_calculator.add("//*\n2*2*3")
+    assert_equal 2, @string_calculator.add("//-\n5-2-1")
+    assert_equal 4, @string_calculator.add("///\n8/2/1")
+  end
 end
